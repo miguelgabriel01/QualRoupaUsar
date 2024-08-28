@@ -1,17 +1,21 @@
-import { StyleSheet, Text, View, Image, Button,TouchableOpacity } from "react-native";
+import React from 'react';
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native';
 import myImageFlorest from '../assets/images/landscape-nature.png'; // Ajuste o caminho conforme necessário
+import { useNavigation } from '@react-navigation/native';
 
 export default function Page() {
+  const navigation = useNavigation();
+
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         <Image source={myImageFlorest} style={styles.image} />
         <Text style={styles.title}>Qual roupa usar?</Text>
         <Text style={styles.subtitle}>Organize suas roupas facilmente! Classifique por tipo, cor e ocasião, e receba lembretes sobre o que usar a cada dia.</Text>
-        <TouchableOpacity style={styles.buttonCreate}>
+        <TouchableOpacity style={styles.buttonCreate} onPress={() => navigation.navigate('formLogin')}>
           <Text style={styles.buttonTextCreate}>Abrir Guarda-roupa</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.buttonLogin}>
+        <TouchableOpacity style={styles.buttonLogin} onPress={() => navigation.navigate('formCreate')}>
           <Text style={styles.buttonTextLogin}>Criar um</Text>
         </TouchableOpacity>
       </View>
@@ -26,32 +30,31 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignContent: 'center',
     flexDirection: 'row',
-    textAlign:'center',
+    textAlign: 'center',
   },
   main: {
     flex: 1,
     justifyContent: "center",
     marginHorizontal: "auto",
-    width:'100%',
-    height:'100%',
+    width: '100%',
+    height: '100%',
     alignContent: 'center',
     flexDirection: 'column',
-    textAlign:'center',
+    textAlign: 'center',
     alignItems: 'center'
   },
   title: {
     fontSize: 30,
     fontWeight: "bold",
-    color: '#5C5C5C',  
-    textAlign:'center',
-                
+    color: '#5C5C5C',
+    textAlign: 'center',
   },
   subtitle: {
     fontSize: 20,
     color: "#777171",
-    textAlign:'center',
+    textAlign: 'center',
     margin: 1,
-    padding:10,
+    padding: 10,
   },
   image: {
     width: 300,
@@ -63,33 +66,33 @@ const styles = StyleSheet.create({
     borderRadius: 50, // Bordas arredondadas
     elevation: 3, // Sombra no Android
     shadowColor: '#000', // Cor da sombra no iOS
-    width:320,
-    height:60,
-    display:'flex',
+    width: 320,
+    height: 60,
+    display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
     marginTop: 90,
-    padding:20,
+    padding: 20,
   },
   buttonLogin: {
     backgroundColor: '#FFFFFF', // Cor de fundo do botão 059CAD
     borderRadius: 50, // Bordas arredondadas
     elevation: 3, // Sombra no Android
     shadowColor: '#000', // Cor da sombra no iOS
-    width:320,
-    height:60,
-    display:'flex',
+    width: 320,
+    height: 60,
+    display: 'flex',
     justifyContent: 'center',
     alignContent: 'center',
     alignItems: 'center',
-    margin:20,
+    margin: 20,
   },
   buttonTextCreate: {
     color: '#FFF', // Cor do texto
     fontSize: 18, // Tamanho da fonte
     fontWeight: 'bold', // Peso da fonte
-  },  
+  },
   buttonTextLogin: {
     color: '#059CAD', // Cor do texto
     fontSize: 18, // Tamanho da fonte
